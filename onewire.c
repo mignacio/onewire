@@ -173,7 +173,7 @@ bool ow_search(uint8_t gpio, uint8_t found_rom[8]){
     last_zero = 0;
     rom_byte_number = 0;
     rom_byte_mask = 1;
-    search_result = 0;
+    search_result = false;
     crc8 = 0;
 
     if(last_device_flag == false){
