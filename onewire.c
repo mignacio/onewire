@@ -15,26 +15,26 @@ const int   A = 6,
 
 void ow_delay_us(){
     #ifndef PLATFORM
-        #error "No platform code for 'ow_delay_us()'."
+        #warning "No platform code for 'ow_delay_us()'."
     #endif
 }
 
 void drive_bus(uint8_t gpio, uint8_t data){
     #ifndef PLATFORM
-        #error "No platform code for 'drive_bus()'."
+        #warning "No platform code for 'drive_bus()'."
     #endif
 }
 
 void release_bus(uint8_t gpio){
     #ifndef PLATFORM
-        #error "No platform code for 'release_bus()'."
+        #warning "No platform code for 'release_bus()'."
     #endif
 }
 
 uint8_t read_bus(uint8_t gpio){
     uint8_t return_val = 0;
     #ifndef PLATFORM
-        #error "No platform code for 'read_bus()'."
+        #warning "No platform code for 'read_bus()'."
     #endif
     return return_val & 0x01;
 }
@@ -42,7 +42,7 @@ uint8_t read_bus(uint8_t gpio){
 uint8_t ow_bus_init(uint8_t gpio){
     uint8_t err = 0;
     #ifndef PLATFORM
-        #error "No platform code for 'ow_bus_init()'."
+        #warning "No platform code for 'ow_bus_init()'."
     #endif
     return err;
 };
@@ -98,10 +98,9 @@ uint8_t ow_read_bit(uint8_t gpio){
 };
 
 void ow_write_byte(uint8_t gpio, uint8_t byte){
-    uint8_t bit = byte;
     for(uint8_t indx = 0; indx < 8; indx++){
-        ow_write_bit(gpio, bit & 0x01);
-        bit >>= 1;
+        ow_write_bit(gpio, byte & 0x01);
+        byte >>= 1;
     }
 };
 
