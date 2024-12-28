@@ -59,7 +59,7 @@ void ow_write_bit(uint8_t gpio, uint8_t bit);
 uint8_t ow_read_bit(uint8_t gpio);
 
 /**
- * Write a byte on the 1-Wire bus
+ * Write a byte on the 1-Wire bus. LSB is written first.
  * @param[gpio] Pin number of the 1-Wire bus.
  * @param[byte] Byte to write.
  */
@@ -90,14 +90,20 @@ uint8_t ow_touch_byte(uint8_t gpio, uint8_t data);
 void ow_block(uint8_t gpio, uint8_t *data, int data_len);
 
 /**
- * Write a block of 1-wire data bytes.
+ * Write a block of 1-wire data bytes. Position 0 gets written first.
  * @param[gpio] Pin number of the 1-Wire bus.
  * @param[data] Pointer to an array of bytes to be written.
  * @param[data_len] Lenght of the data array.
  */
 void ow_write_block(uint8_t gpio, uint8_t *data, int data_len);
 
-uint8_t docrc8(uint8_t value);
+/**
+ * Perform crc8 calculation of value with the global crc8 variable.
+ * CRC polynomial is: x^8 + x^5 + x^4 + 1
+ * @param[value] Byte to be added to the crc8 calculation.
+ * @return The updated crc8 value.
+ */
+uint8_t do_crc8(uint8_t value);
 
 // ROM search functions
 
