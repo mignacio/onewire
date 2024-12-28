@@ -140,6 +140,12 @@ void ow_block(uint8_t gpio, uint8_t *data, int data_len){
     }
 }
 
+void ow_write_block(uint8_t gpio, uint8_t *data, int data_len){
+    for(uint8_t indx = 0; indx < data_len; indx++){
+        ow_write_byte(gpio, data[indx]);
+    }
+}
+
 // Global search state
 static uint8_t ROM_NO[8] = {0};
 static uint8_t last_discrepancy = 0;

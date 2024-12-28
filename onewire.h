@@ -89,6 +89,14 @@ uint8_t ow_touch_byte(uint8_t gpio, uint8_t data);
  */
 void ow_block(uint8_t gpio, uint8_t *data, int data_len);
 
+/**
+ * Write a block of 1-wire data bytes.
+ * @param[gpio] Pin number of the 1-Wire bus.
+ * @param[data] Pointer to an array of bytes to be written.
+ * @param[data_len] Lenght of the data array.
+ */
+void ow_write_block(uint8_t gpio, uint8_t *data, int data_len);
+
 uint8_t docrc8(uint8_t value);
 
 // ROM search functions
